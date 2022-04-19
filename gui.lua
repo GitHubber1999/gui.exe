@@ -3079,6 +3079,26 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 end)
 ---------------------
 
+pcall(function()
+  game.StarterGui:SetCore("SendNotification", {
+    Title = 'GUI.exe';
+    Text = 'Thanks for using GUI.exe!';
+    Duration = 5;
+  })
+  if not game.Players.LocalPlayer:IsInGroup(585858) then
+    coroutine.resume(coroutine.create(function()
+       wait(2)
+       game.StarterGui:SetCore("SendNotification", {
+        Title = 'This script is in beta.';
+        Text = 'the script will still work but it may have some issues';
+        Duration = 10;
+       })
+       setclipboard('Thanks for using GUI.exe!')
+    end))
+  end
+end)
+
+
 if game.Players.LocalPlayer == user_premium__001 then
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "Premium Loaded";
